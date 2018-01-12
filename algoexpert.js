@@ -34,3 +34,44 @@ function findClosestValueInBst(tree, target) {
 
   return closest;
 }
+
+//DFS
+class Node {
+  constructor(name) {
+    this.name = name;
+    this.children = [];
+  }
+
+  addChild(name) {
+    this.children.push(new Node(name));
+    return this;
+  }
+
+  depthFirstSearch(array) {
+    array.push(this.name);
+    for (let i = 0; i < this.children.length; i++) {
+      this.children[i].depthFirstSearch(array);
+    }
+    return array;
+  }
+}
+
+//Binary Search: Solution 1
+function binarySearch(array, target) {
+  return helper(array, target, 0, array.length);
+}
+
+function helper(array, target, left, right) {
+  if (left > right) return -1;
+  let middle = Math.floor((left + right) / 2);
+
+  if (array[middle] === target) return middle;
+  else if (array[middle] > target) {
+    return helper(array, target, left, middle - 1);
+  } else {
+    return helper(array, target, middle + 1, array.length);
+  }
+}
+
+//Binary Search: Solution 2
+
