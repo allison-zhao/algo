@@ -56,7 +56,7 @@ class Node {
   }
 }
 
-//Binary Search: Solution 1
+//Binary Search: Solution 1 - O(logn)
 function binarySearch(array, target) {
   return helper(array, target, 0, array.length);
 }
@@ -74,4 +74,19 @@ function helper(array, target, left, right) {
 }
 
 //Binary Search: Solution 2
+function binarySearch(array, target) {
+  let leftPtr = 0;
+  let rightPtr = array.length - 1;
 
+  while (leftPtr <= rightPtr) {
+    let middle = Math.floor((leftPtr + rightPtr) / 2);
+    if (array[middle] === target) return middle;
+    else if (array[middle] < target) {
+      leftPtr = middle + 1;
+    } else {
+      rightPtr = middle - 1;
+    }
+  }
+
+  return -1;
+}
