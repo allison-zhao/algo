@@ -90,3 +90,25 @@ function binarySearch(array, target) {
 
   return -1;
 }
+
+//Find three largest numbers
+function findThreeLargestNumbers(array) {
+  let first = -Infinity;
+  let second = -Infinity;
+  let third = -Infinity;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] > third) {
+      first = second;
+      second = third;
+      third = array[i];
+    } else if (array[i] > second) {
+      first = second;
+      second = array[i];
+    } else if (array[i] > first) {
+      first = array[i];
+    }
+  }
+
+  return [first, second, third];
+}
