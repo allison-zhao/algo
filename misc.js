@@ -23,3 +23,4 @@ function transformString(str) {
 
   return result.join('');
 }
+
