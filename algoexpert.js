@@ -153,3 +153,37 @@ function threeNumberSum(array, targetSum) {
 
   return triplets;
 }
+
+//Smallest Difference
+function smallestDifference(arrayOne, arrayTwo) {
+  let result = [];
+  arrayOne.sort((a, b) => a - b);
+  arrayTwo.sort((a, b) => a - b);
+  let ptr1 = 0;
+  let ptr2 = 0;
+  let current = Infinity;
+  let smallest = Infinity;
+
+  while (ptr1 < arrayOne.length && ptr2 < arrayTwo.length) {
+    let num1 = arrayOne[ptr1];
+    let num2 = arrayTwo[ptr2];
+
+    if (num1 < num2) {
+      current = num2 - num1;
+      ptr1++;
+    } else if (num1 > num2) {
+      current = num1 - num2;
+      ptr2++;
+    }
+    else {
+      return [num1 - num2]
+    }
+
+    if (smallest > current){
+      smallest = current;
+      result = [num1, num2];
+    }
+  }
+
+  return result;
+}
