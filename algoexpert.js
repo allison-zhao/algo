@@ -174,16 +174,64 @@ function smallestDifference(arrayOne, arrayTwo) {
     } else if (num1 > num2) {
       current = num1 - num2;
       ptr2++;
-    }
-    else {
-      return [num1 - num2]
+    } else {
+      return [num1 - num2];
     }
 
-    if (smallest > current){
+    if (smallest > current) {
       smallest = current;
       result = [num1, num2];
     }
   }
 
   return result;
+}
+
+//BST Construction
+
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(value) {
+    if (this.value > value) {
+      if (this.left === null) {
+        this.left = new BST(value);
+      } else {
+        this.left.insert(value);
+      }
+    } else {
+      if (this.right === null) {
+        this.right = new BST(value);
+      } else {
+        this.right.insert(value);
+      }
+    }
+    return this;
+  }
+
+  contains(value) {
+    if (value < this.value) {
+      if (this.left === null) {
+        return false;
+      } else {
+        return this.left.contains(value);
+      }
+    } else if (value > this.value) {
+      if (this.right === null) {
+        return false;
+      } else {
+        return this.right.contains(value);
+      }
+    } else {
+      return true;
+    }
+  }
+
+  // remove(value) {
+  //   return this;
+  // }
 }
