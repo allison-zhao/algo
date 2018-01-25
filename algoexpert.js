@@ -236,6 +236,13 @@ class BST {
   // }
 }
 
+//Validate BST 
+function validateBST(tree, min= -Infinity, max= Infinity){
+  if (tree === null) return true;
+  if (tree.value < min || tree.value >= max) return false;
+  return validateBST(tree.left, min, tree.value) && validateBST(tree.right, tree.value, max)
+}
+
 //BST Traversal
 function inOrder(tree, array) {
   if (tree !== null) {
