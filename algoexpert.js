@@ -235,3 +235,34 @@ class BST {
   //   return this;
   // }
 }
+
+//BST Traversal
+function inOrder(tree, array) {
+  if (tree !== null) {
+    inOrder(tree.left, array);
+    array.push(tree.value);
+    inOrder(tree.right, array);
+  }
+
+  return array;
+}
+
+function preOrder(tree, array) {
+  if (tree !== null) {
+    array.push(tree.value);
+    preOrder(tree.left, array);
+    preOrder(tree.right, array);
+  }
+
+  return array;
+}
+
+function postOrder(tree, array) {
+  if (tree !== null) {
+    postOrder(tree.left, array);
+    postOrder(tree.right, array);
+    array.push(tree.value);
+  }
+
+  return array;
+}
